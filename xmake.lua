@@ -1,0 +1,8 @@
+target("myRenderer")
+set_kind("binary")
+add_files("src/*.cpp")
+add_includedirs("include", { public = true })
+set_languages("cxx11")
+add_links("SDL2", "SDL2_ttf")
+add_cxflags("-g")
+set_rundir("$(projectdir)")

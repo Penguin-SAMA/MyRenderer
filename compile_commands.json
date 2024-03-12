@@ -1,0 +1,41 @@
+[
+{
+  "directory": "/home/penguin/code/pillow",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-std=c++11", "-Iinclude", "-g", "-o", "build/.objs/pillow/linux/x86_64/release/src/vector.cpp.o", "src/vector.cpp"],
+  "file": "src/vector.cpp"
+},
+{
+  "directory": "/home/penguin/code/pillow",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-std=c++11", "-Iinclude", "-g", "-o", "build/.objs/pillow/linux/x86_64/release/src/Mesh.cpp.o", "src/Mesh.cpp"],
+  "file": "src/Mesh.cpp"
+},
+{
+  "directory": "/home/penguin/code/pillow",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-std=c++11", "-Iinclude", "-g", "-o", "build/.objs/pillow/linux/x86_64/release/src/display.cpp.o", "src/display.cpp"],
+  "file": "src/display.cpp"
+},
+{
+  "directory": "/home/penguin/code/pillow",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-std=c++11", "-Iinclude", "-g", "-o", "build/.objs/pillow/linux/x86_64/release/src/Camera.cpp.o", "src/Camera.cpp"],
+  "file": "src/Camera.cpp"
+},
+{
+  "directory": "/home/penguin/code/pillow",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-std=c++11", "-Iinclude", "-g", "-o", "build/.objs/pillow/linux/x86_64/release/src/utils.cpp.o", "src/utils.cpp"],
+  "file": "src/utils.cpp"
+},
+{
+  "directory": "/home/penguin/code/pillow",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-std=c++11", "-Iinclude", "-g", "-o", "build/.objs/pillow/linux/x86_64/release/src/Material.cpp.o", "src/Material.cpp"],
+  "file": "src/Material.cpp"
+},
+{
+  "directory": "/home/penguin/code/pillow",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-std=c++11", "-Iinclude", "-g", "-o", "build/.objs/pillow/linux/x86_64/release/src/Model.cpp.o", "src/Model.cpp"],
+  "file": "src/Model.cpp"
+},
+{
+  "directory": "/home/penguin/code/pillow",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-std=c++11", "-Iinclude", "-g", "-o", "build/.objs/pillow/linux/x86_64/release/src/main.cpp.o", "src/main.cpp"],
+  "file": "src/main.cpp"
+}]
