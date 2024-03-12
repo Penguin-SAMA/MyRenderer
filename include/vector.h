@@ -1,5 +1,4 @@
-#ifndef VEC3_H
-#define VEC3_H
+#pragma once
 
 struct vector4D {
 	float x;
@@ -39,4 +38,3 @@ class Vec3 {
 
 };
 
-#endif

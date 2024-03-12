@@ -1,5 +1,4 @@
-#ifndef MATERIAL_H
-#define MATERIAL_H
+#pragma once
 
 #include "Resource.h"
 
@@ -34,5 +33,3 @@ class Material: public Resource {
 		~Material(); //destructor
 
 };
-
-#endif

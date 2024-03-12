@@ -1,5 +1,4 @@
-#ifndef DISPLAY_H
-#define DISPLAY_H
+#pragma once
 
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_ttf.h"
@@ -59,5 +58,3 @@ public:
 private:
     void prepare_buffers();
 };
-
-#endif

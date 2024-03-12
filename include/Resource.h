@@ -1,5 +1,4 @@
-#ifndef RESOURCE_H
-#define RESOURCE_H
+#pragma once
 
 #define MATERIAL 1
 #define MESH 2
@@ -20,4 +19,3 @@ class Resource {
 		virtual ~Resource() {}; 
 };
 
-#endif

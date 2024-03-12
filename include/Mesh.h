@@ -1,5 +1,5 @@
-#ifndef MESH_H
-#define MESH_H
+#pragma once
+
 #include "Resource.h"
 
 
@@ -43,5 +43,3 @@ class Mesh: public Resource {
 		bool _normals();
 	
 };	
-
-#endif

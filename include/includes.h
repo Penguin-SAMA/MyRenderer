@@ -1,5 +1,5 @@
-#ifndef INCLUDES_H
-#define INCLUDES_H
+#pragma once
+
 #include "stdio.h"
 #include "stdlib.h"
 #include <unistd.h>
@@ -14,4 +14,3 @@
 #include <math.h>
 #include <map>
 
-#endif
