@@ -1,8 +1,10 @@
-#include "../include/display.h"
+// clang-format off
 #include "../include/includes.h"
+#include "../include/display.h"
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_ttf.h"
 #include <unistd.h>
+// clang-format on
 
 Display::Display(int width, int height, std::string title) {
     this->width = std::max(MIN_W, std::min(width, MAX_W));

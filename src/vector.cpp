@@ -1,5 +1,7 @@
-#include "../include/vector.h"
+// clang-format off
 #include "../include/includes.h"
+#include "../include/vector.h"
+// clang-format on
 
 Vec3::Vec3(float x, float y, float z) {
     this->x = x;

@@ -1,7 +1,9 @@
+// clang-format off
+#include "../include/includes.h"
 #include "../include/Material.h"
 #include "../include/Resource.h"
-#include "../include/includes.h"
 #include "../include/utils.h"
+// clang-format on
 
 int Material::type() {
     // TODO

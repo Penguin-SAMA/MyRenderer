@@ -1,5 +1,7 @@
-#include "../include/Material.h"
+// clang-format off
 #include "../include/includes.h"
+#include "../include/Material.h"
+// clang-format on
 
 // 分割字符串
 int _split(const std::string& str, std::vector<std::string>& vec, char delim = ' ') {

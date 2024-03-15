@@ -1,11 +1,13 @@
+// clang-format off
+#include "../include/includes.h"
 #include "../include/Camera.h"
 #include "../include/Material.h"
 #include "../include/Mesh.h"
 #include "../include/Model.h"
 #include "../include/display.h"
-#include "../include/includes.h"
 #include "../include/utils.h"
 #include "../include/vector.h"
+// clang-format on
 
 #define WIN_WIDTH 1280
 #define WIN_HEIGHT 720

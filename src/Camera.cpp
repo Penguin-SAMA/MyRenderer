@@ -1,6 +1,8 @@
-#include "../include/Camera.h"
+// clang-format off
 #include "../include/includes.h"
+#include "../include/Camera.h"
 #include "../include/vector.h"
+// clang-format on
 
 void Camera::position(float x, float y, float z) {
     this->eye_x = x;

@@ -1,8 +1,10 @@
+// clang-format off
+#include "../include/includes.h"
 #include "../include/Mesh.h"
 #include "../include/Resource.h"
-#include "../include/includes.h"
 #include "../include/utils.h"
 #include "../include/vector.h"
+// clang-format on
 
 Mesh::Mesh() {
 }
