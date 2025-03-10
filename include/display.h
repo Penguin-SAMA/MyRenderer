@@ -2,6 +2,7 @@
 
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_ttf.h"
+#include <map>
 #include <queue>
 #include <string>
 
@@ -28,16 +29,16 @@ struct pixel {
 class Display
 {
 public:
-    unsigned char buffer[MAX_W][MAX_H][4];
-    float depth_buffer[MAX_W][MAX_H];
+    unsigned char buffer[MAX_W][MAX_H][4]; // 颜色缓冲
+    float depth_buffer[MAX_W][MAX_H];      // 深度缓冲
     int height = 0;
     int width = 0;
     int FONT_H = 30;
     std::string title;
     unsigned char clc[4] = {30, 30, 30, 255};
-    SDL_Texture* Frame;
-    SDL_Window* window;
-    SDL_Renderer* renderer;
+    SDL_Texture* Frame;     // 帧缓冲
+    SDL_Window* window;     // SDL窗口
+    SDL_Renderer* renderer; // SDL渲染器
     std::map<int, TTF_Font*> fonts;
     bool depth_buffering = true;
     int min_font_size = 5;

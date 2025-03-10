@@ -4,12 +4,14 @@
 #include "../include/vector.h"
 // clang-format on
 
+// 设置相机位置
 void Camera::position(float x, float y, float z) {
     this->eye_x = x;
     this->eye_y = y;
     this->eye_z = z;
 }
 
+// 设置目标点位置
 void Camera::lookAt(float x, float y, float z) {
     this->at_x = x;
     this->at_y = y;
@@ -56,14 +58,15 @@ void Camera::rotate_y(float deg) {
     this->eye_z += at_z;
 }
 
+// 计算视图变换
 void Camera::update_transform() {
     Vec3 at(this->at_x, this->at_y, this->at_z);
     Vec3 eye(this->eye_x, this->eye_y, this->eye_z);
     Vec3 up(0, 1, 0);
 
-    Vec3 zaxis = at.res(eye).normalize();
-    Vec3 xaxis = up.cross(zaxis).normalize();
-    Vec3 yaxis = zaxis.cross(xaxis);
+    Vec3 zaxis = at.res(eye).normalize();     // 前向向量
+    Vec3 xaxis = up.cross(zaxis).normalize(); // 右向向量
+    Vec3 yaxis = zaxis.cross(xaxis);          // 上向量
 
     this->transform[0][0] = xaxis.x;
     this->transform[1][0] = xaxis.y;

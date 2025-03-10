@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Resource.h"
+#include <vector>
 
 struct vertex {
     float x;
@@ -17,7 +18,7 @@ class Mesh : public Resource
 {
 public:
     std::vector<struct vertex> v_list;
-    std::vector<std::vector<std::pair<long, long> > > f_list;
+    std::vector<std::vector<std::pair<long, long>>> f_list;
     std::vector<struct vertex> n_list;
     std::vector<std::string> mat_list;
     std::string name;
@@ -35,7 +36,7 @@ public:
     long normals();
     void add_vertex(float x, float y, float z);
     long vertices();
-    void add_face(std::vector<std::pair<long, long> > face, std::string m);
+    void add_face(std::vector<std::pair<long, long>> face, std::string m);
     long polygons();
     bool _normals();
 };

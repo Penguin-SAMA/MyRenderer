@@ -1,3 +1,4 @@
+add_rules("plugin.compile_commands.autoupdate")
 target("myRenderer")
 set_kind("binary")
 add_files("src/*.cpp")
