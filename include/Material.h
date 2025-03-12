@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Resource.h"
+#include <map>
 
 struct mtl {
     float ka[3];

@@ -694,11 +694,11 @@ long _render_mesh(Model* m) {
 
                     // 镜面反射
                     if (specular) {
-                        Vec3 lr = l.mul(1);
+                        Vec3 lr = l.mul(1); // 光线方向
                         float h2 = lr.dot(ggnorm) * 2;
                         Vec3 ref1(h2 * ggnorm.x, h2 * ggnorm.y, h2 * ggnorm.z);
-                        Vec3 reflected = lr.res(ref1);
-                        Vec3 to_cam = curr_v.res(vec4).normalize();
+                        Vec3 reflected = lr.res(ref1);              // 反射光线方向
+                        Vec3 to_cam = curr_v.res(vec4).normalize(); // 观察方向
 
                         float rfdot = (float)to_cam.dot(reflected);
 
