@@ -4,4 +4,4 @@
 
 `xmake`
 
-`xmake run (obj_path)`
+`xmake run myRenderer (obj_path)`
