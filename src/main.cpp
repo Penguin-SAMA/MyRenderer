@@ -173,8 +173,9 @@ void get_pairs(struct vector3D poly_r[4], struct Color v_a[4], int min, int minx
         while (true) {
             struct vector2D point = {x0, y0};
             curr_raster[index] = point;
-            if ((x0 == x1) && (y0 == y1))
+            if ((x0 == x1) && (y0 == y1)) {
                 break;
+            }
             int e2 = 2 * err;
             if (e2 > -dy) {
                 err -= dy;
@@ -234,8 +235,9 @@ void clip_triangle(std::vector<long>& ply, std::vector<struct vertex>& new_poly,
             new_poly.push_back(n);
             continue;
         }
-        if (s->z > s->w && e->z > e->w)
+        if (s->z > s->w && e->z > e->w) {
             continue;
+        }
 
         // 实现Liang Barsky线段裁剪算法
         // https://en.wikipedia.org/wiki/Liang%E2%80%93Barsky_algorithm
@@ -299,8 +301,9 @@ void draw_line(float stx, float sty, float ex, float ey) {
     while (true) {
         display->set_pixel(x0, y0, c, -100);
         ;
-        if ((x0 == x1) && (y0 == y1))
+        if ((x0 == x1) && (y0 == y1)) {
             break;
+        }
         int e2 = 2 * err;
         if (e2 > -dy) {
             err -= dy;
@@ -359,8 +362,9 @@ void render_triangle(struct vertex* clip_coords[4], std::vector<struct vector3D>
         float z = v->w;
         struct vector3D r1 = {x, y, 1 / z};
 
-        if (draw_vertex)
+        if (draw_vertex) {
             draw_point(x, y, z, 5);
+        }
 
         poly_r[k] = r1;
         if (y > maxy) {
@@ -406,8 +410,9 @@ void render_triangle(struct vertex* clip_coords[4], std::vector<struct vector3D>
         int is = 0;
         int il = 0;
         for (int b = 0; b < rangex; b++) {
-            if (edge_pixels[l][b].x == -1)
+            if (edge_pixels[l][b].x == -1) {
                 continue;
+            }
 
             if (edge_pixels[l][b].x <= smallest) {
                 smallest = edge_pixels[l][b].x;
@@ -550,11 +555,13 @@ long _render_mesh(Model* m) {
                 }
             }
 
-            if (v02.z > v02.w || v12.z > v12.w || v22.z > v22.w)
+            if (v02.z > v02.w || v12.z > v12.w || v22.z > v22.w) {
                 continue;
+            }
 
-            if (v02.z < -v02.w || v12.z < -v12.w || v22.z < -v22.w)
+            if (v02.z < -v02.w || v12.z < -v12.w || v22.z < -v22.w) {
                 continue;
+            }
 
             render_triangle(clip_coords, &colors);
         }
@@ -723,11 +730,13 @@ long _render_mesh(Model* m) {
 
             // 检查变换后的顶点是否需要被裁剪
             // 如果顶点的z坐标大于其w坐标，或者z坐标小于其w坐标的负值，说明顶点在视锥体外，需要被裁剪
-            if (v02.z > v02.w || v12.z > v12.w || v22.z > v22.w) // 若顶点位于远裁剪面之外
+            if (v02.z > v02.w || v12.z > v12.w || v22.z > v22.w) { // 若顶点位于远裁剪面之外
                 continue;
+            }
 
-            if (v02.z < -v02.w || v12.z < -v12.w || v22.z < -v22.w) // 若顶点位于近裁剪面之外
+            if (v02.z < -v02.w || v12.z < -v12.w || v22.z < -v22.w) { // 若顶点位于近裁剪面之外
                 continue;
+            }
 
             render_triangle(clip_coords, &colors);
         }
@@ -847,8 +856,9 @@ void render() {
     i = 0;
     for (int i = 0; i < menu.size(); i++) {
         bool toggled = menu[i].second.second;
-        if (toggled && menu[i].first != "Toggle" && !menu[i].first.empty())
+        if (toggled && menu[i].first != "Toggle" && !menu[i].first.empty()) {
             display->draw_text("+", 100, 280 + (i * (text_size + spacing)), text_color, text_size);
+        }
 
         display->draw_text(menu[i].first, 100 + 15, 280 + (i * (text_size + spacing)), text_color, text_size);
         display->draw_text(menu[i].second.first, 280, 280 + (i * (text_size + spacing)), text_color, text_size);
@@ -1035,8 +1045,9 @@ void handle_event(SDL_Event e) {
         break;
     }
     case SDL_MOUSEWHEEL: { // 鼠标滚轮事件
-        if (!no_rasterize || draw_wireframe)
+        if (!no_rasterize || draw_wireframe) {
             cam_zoom += e.wheel.y * 0.05f;
+        }
         break;
     }
     case SDL_KEYDOWN: { // 按键事件
@@ -1087,10 +1098,11 @@ int main(int argc, char* args[]) {
     bool quit = false;
     while (!quit) {
         while (SDL_PollEvent(&e)) {
-            if (e.type == SDL_QUIT)
+            if (e.type == SDL_QUIT) {
                 quit = true;
-            else
+            } else {
                 handle_event(e);
+            }
         }
         display->clear_buffer();
 
