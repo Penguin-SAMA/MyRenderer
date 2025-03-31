@@ -97,16 +97,16 @@ unsigned char wireframeColor[4] = {wireframe[0], wireframe[1], wireframe[2], 255
 unsigned char clear_color[4] = {225, 225, 225, 255};                               // 清除颜色
 bool no_clipping = false;                                                          // 启用裁剪
 long selected = 0;
-const struct viewport vp = {150, 50, 800, 600};           // 视口设置
-const float far = 10;                                     // 远平面距离
-const float near = 1;                                     // 近平面距离
-const int fov = 90;                                       // 视场角度
-const float S = 1 / (tan((fov / 2) * (M_PI / 180)));      // 投影矩阵的缩放因子
-const float aspect_ratio = (float)WIN_WIDTH / WIN_HEIGHT; // 宽高比
-struct edge_pixel empty = {-1, (unsigned char)NULL, 0};   // 空边缘像素（）
-std::string g_mesh_path;                                  // 模型路径
-std::string g_mtl_path;                                   // 材质路径
-float projection_matrix[4][4] = {                         // 投影矩阵
+const struct viewport vp = {150, 50, 800, 600};             // 视口设置
+const float far = 10;                                       // 远平面距离
+const float near = 1;                                       // 近平面距离
+const int fov = 90;                                         // 视场角度
+const float S = 1 / (tan(((float)fov / 2) * (M_PI / 180))); // 投影矩阵的缩放因子
+const float aspect_ratio = (float)WIN_WIDTH / WIN_HEIGHT;   // 宽高比
+struct edge_pixel empty = {-1, (unsigned char)NULL, 0};     // 空边缘像素（）
+std::string g_mesh_path;                                    // 模型路径
+std::string g_mtl_path;                                     // 材质路径
+float projection_matrix[4][4] = {                           // 投影矩阵
 
     {S / aspect_ratio, 0, 0, 0},
     {0, S, 0, 0},
@@ -123,7 +123,6 @@ const int lights = 5;                                                           
 float ambient_light[3] = {(float)(70.0f / 255.0f), (float)(70.0f / 255.0f), (float)(70.0f / 255.0f)}; // 环境光颜色
 float point_light[lights][6] = {
     // 点光源设置
-
     {(float)(200.0f / 255.0f), (float)(200.0f / 255.0f), (float)(200.0f / 255.0f), 0, 3, 4},
     {(float)(160.0f / 255.0f), (float)(160.0f / 255.0f), (float)(160.0f / 255.0f), 0, 4, -4},
     {(float)(40.0f / 255.0f), (float)(40.0f / 255.0f), (float)(40.0f / 255.0f), 0, 10, 0},
@@ -328,11 +327,11 @@ struct vertex apply_transformation(struct vertex* v, float m[4][4]) {
 
 // 绘制两个三维向量之间的直线
 void draw_vector(Vec3 v1, Vec3 v2) {
-    float x = (v1.x / v1.z) * WIN_WIDTH + (WIN_WIDTH / 2);
-    float y = (-v1.y / v1.z) * WIN_HEIGHT + (WIN_HEIGHT / 2);
+    float x = (v1.x / v1.z) * WIN_WIDTH + ((float)WIN_WIDTH / 2);
+    float y = (-v1.y / v1.z) * WIN_HEIGHT + ((float)WIN_HEIGHT / 2);
 
-    float x1 = (v2.x / v2.z) * WIN_WIDTH + (WIN_WIDTH / 2);
-    float y1 = (-v2.y / v2.z) * WIN_HEIGHT + (WIN_HEIGHT / 2);
+    float x1 = (v2.x / v2.z) * WIN_WIDTH + ((float)WIN_WIDTH / 2);
+    float y1 = (-v2.y / v2.z) * WIN_HEIGHT + ((float)WIN_HEIGHT / 2);
 
     draw_line(x, y, x1, y1);
 }
@@ -350,8 +349,8 @@ void render_triangle(struct vertex* clip_coords[4], std::vector<struct vector3D>
         struct vertex* v = clip_coords[k];
 
         // 透视除法
-        float x = (v->x / v->w) * WIN_WIDTH + (WIN_WIDTH / 2);
-        float y = (-v->y / v->w) * WIN_HEIGHT + (WIN_HEIGHT / 2);
+        float x = (v->x / v->w) * WIN_WIDTH + ((float)WIN_WIDTH / 2);
+        float y = (-v->y / v->w) * WIN_HEIGHT + ((float)WIN_HEIGHT / 2);
 
         // 将坐标控制在屏幕内
         x = std::max(std::min((float)WIN_WIDTH - 1, x), 0.0f);
@@ -577,8 +576,8 @@ long _render_mesh(Model* m) {
             struct vertex v2 = apply_transformation(&v1, projection_matrix);
             if (draw_lights) {
                 // printf(" - %f %f\n",v2.x,v2.y);
-                float _x = (v2.x / v2.w) * WIN_WIDTH + (WIN_WIDTH / 2);
-                float _y = (-v2.y / v2.w) * WIN_HEIGHT + (WIN_HEIGHT / 2);
+                float _x = (v2.x / v2.w) * WIN_WIDTH + ((float)WIN_WIDTH / 2);
+                float _y = (-v2.y / v2.w) * WIN_HEIGHT + ((float)WIN_HEIGHT / 2);
                 float _z = v2.w;
                 // printf("%f %f draw\n",_x,_y);
                 draw_point(_x, _y, _z, 20);
@@ -716,7 +715,6 @@ long _render_mesh(Model* m) {
                 struct vector3D col = {fill_r, fill_g, fill_b};
                 colors.push_back(col);
             }
-            //--------
 
             v02 = apply_transformation(&v01, projection_matrix);
             v12 = apply_transformation(&v11, projection_matrix);
@@ -859,7 +857,7 @@ void render() {
     // display->draw_text("vertices");
 
     display->draw_text("press (e) to reset orientation", WIN_WIDTH - 310, 100, text_color, text_size);
-    display->draw_text("mtl:           " + g_mtl_path, 15, WIN_HEIGHT - 45, text_color, margin_text);
+    display->draw_text("mtl:       " + g_mtl_path, 15, WIN_HEIGHT - 45, text_color, margin_text);
     display->draw_text("mesh:      " + g_mesh_path, 15, WIN_HEIGHT - 30, text_color, margin_text);
     display->show();
 }
@@ -1102,7 +1100,7 @@ int main(int argc, char* args[]) {
             fps = frames;
             frames = 0;
         }
-        update();
+        // update();
         render();
         display->flip_buffer();
         frames++;
